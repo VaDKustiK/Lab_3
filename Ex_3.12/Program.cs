@@ -16,17 +16,16 @@ for (int i = 0; i < 12; i++)
     {
         int k = i;
         count++;
-        for (int j = k; j < 11-count+1; j++)
+        for (int j = k; j < 11 - count + 1; j++)
         {
             array[j] = array[j + 1];
         }
         i--;
-        array[11-count+1] = 0;
+        array[11 - count + 1] = 0;
     }
 }
 Console.WriteLine("Новые значения");
 for (int i = 0; i < 12 - count; i++)
 {
-    Console.WriteLine("{0:d} ", array[i]);
+    Console.WriteLine($"{array[i]}");
 }
-Console.WriteLine();
