@@ -13,39 +13,56 @@ for (int i = 0; i < x; i++)
 
 int countVmax = 0;
 int countUmax = 0;
-int countV = 0;
-int countU = 0;
-for (int i = 0; i < x-1; i++)
+int countV = 1;
+int countU = 1;
+for (int i = 1; i < x; i++)
 {
-    if (array[i] > array[i + 1])
+    if (array[i] >= array[i - 1])
     {
         countV++;
-        countVmax = countV;
-        if (countVmax < countUmax)
-        {
-            countVmax = 0;
-        }
     }
-    else if (array[i] < array[i + 1])
+    else
+    {
+        if (countV > countVmax)
+        {
+            countVmax = countV;
+        }
+        countV = 1;
+    }
+
+    if (array[i] <= array[i - 1])
     {
         countU++;
-        countUmax = countU;
-        if (countVmax > countUmax)
-        {
-            countUmax = 0;
-        }
     }
+    else
+    {
+        if (countU > countUmax)
+        {
+            countUmax = countU;
+        }
+        countU = 1;
+    }
+}
+
+if (countV > countVmax)
+{
+    countVmax = countV;
+}
+
+if (countU > countUmax)
+{
+    countUmax = countU;
 }
 
 if (countVmax > countUmax)
 {
-    Console.WriteLine($"длина последовательности равна {countVmax}");
+    Console.WriteLine($"Максимальная длина возрастающей последовательности равна {countVmax}");
 }
-else if  (countUmax > countVmax)
+else if (countUmax > countVmax)
 {
-    Console.WriteLine($"длина последовательности равна {countUmax}");
+    Console.WriteLine($"Максимальная длина убывающей последовательности равна {countUmax}");
 }
 else
 {
-    Console.WriteLine($"длина последовательности равна {countVmax}");
+    Console.WriteLine($"Максимальная длина убывающей и возрастающей последовательности равны {countUmax}");
 }
